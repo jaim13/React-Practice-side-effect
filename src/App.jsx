@@ -8,9 +8,9 @@ import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
 const storeIds = JSON.parse(localStorage.getItem("selecetedPlaces")) || [];
-    const storedPlaces = storeIds.map((id) =>
-      AVAILABLE_PLACES.find((place) => place.id === id)
-    );
+const storedPlaces = storeIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const selectedPlace = useRef();
@@ -69,13 +69,12 @@ function App() {
 
   return (
     <>
-      <Modal open={modalIsOpen}>
+      <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
         />
       </Modal>
-
       <header>
         <img src={logoImg} alt="Stylized globe" />
         <h1>PlacePicker</h1>
